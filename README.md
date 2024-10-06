@@ -1,5 +1,5 @@
 # user-repo-cleanup-script
-- > ** IMPORTANT**: This script prompts you (yes or no) before deleting each repository. It fetches user repository only, not organization repository.
+- > **⚠️ IMPORTANT**: This script prompts you (yes or no) before deleting each repository. It fetches user repository only, not organization repository.
 
 - This repository contains a shell script that allows you to delete your GitHub repositories after confirming each one. The script fetches both public and private repositories associated with your GitHub account and prompts you for confirmation before deletion.
 
