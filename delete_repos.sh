@@ -3,10 +3,10 @@ GITHUB_USERNAME="<ENTER YOUR USERNAME>"
 AUTH_TOKEN="<ENTER YOUR TOKEN>"
 
 # Fetch public repositories
-public_repos=$(curl -s "https://api.github.com/users/$GITHUB_USERNAME/repos?per_page=100&page=1" | jq -r '.[] | .full_name')
+public_repos=$(curl -s -H "Authorization: token $AUTH_TOKEN" "https://api.github.com/user/repos?visibility=public&affiliation=owner" | jq -r '.[].full_name')
 
 # Fetch private repositories
-private_repos=$(curl -s -H "Authorization: token $AUTH_TOKEN" "https://api.github.com/user/repos?visibility=private" | jq -r '.[].full_name')
+private_repos=$(curl -s -H "Authorization: token $AUTH_TOKEN" "https://api.github.com/user/repos?visibility=private&affiliation=owner" | jq -r '.[].full_name')
 
 # Combine public and private repositories into an array
 IFS=$'\n' read -rd '' -a all_repos <<<"$public_repos"$'\n'"$private_repos"
